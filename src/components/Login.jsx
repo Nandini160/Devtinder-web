@@ -11,25 +11,28 @@ const Login = () => {
 
    const [emailId , setEmailId] = useState("anam@gmail.com");
    const [password, setPassword] = useState("Anam@123");
+   const [error , setError] = useState("");
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
    const handleLogin = async () => {
-    try{
+    try {
       const res = await axios.post(
-        BASE_URL + "/login", {
-         emailId,
-         password,
-      }, {withCredentials:true}
-    );
-    console.log(res.data);
-    dispatch(addUser(res.data));
-    return navigate("/");
+        BASE_URL + "/login",
+        {
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
+      dispatch(addUser(res.data));
+      return navigate("/");
+    } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
     }
-    catch(err){
-      console.log(err)
-    }
-};
+  };
+
+
 
 
   return (
@@ -56,6 +59,7 @@ const Login = () => {
              />
             </fieldset>
           </div>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center m-2">
            <button className="btn btn-primary" onClick={handleLogin}>Login</button>
           </div>
@@ -64,6 +68,6 @@ const Login = () => {
      
     </div>
   )
-}
+};
 
 export default Login;

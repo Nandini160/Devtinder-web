@@ -23,7 +23,8 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar bg-base-300 shadow-sm h-12 min-h-0 px-4">
+    // <div className="navbar bg-base-300 shadow-sm h-12 min-h-0 px-4">
+    <div className="navbar bg-base-300 ">
     <div className="flex-1">
       <Link to= "/" className="btn btn-ghost text-xl">😎DevTinder</Link>
     </div>
@@ -48,7 +49,11 @@ const Navbar = () => {
               <span className="badge">New</span>
             </Link>
           </li>
-          <li><a>Settings</a></li>
+          <Link to ="/connections">Connections</Link>
+
+          <li>
+                <Link to="/requests">Requests</Link>
+          </li>
           <li>
             <button onClick={handleLogout}>Logout</button>
           </li>

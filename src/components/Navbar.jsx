@@ -30,7 +30,7 @@ const Navbar = () => {
     </div>
      <div className="flex gap-2">
       {/* <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />  */}
-      {user && (
+      {user!== null && (
       <div className="dropdown dropdown-end mx-5 flex items-center">
         <p className='px-4'>Welcome,{user.firstName}</p>
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
